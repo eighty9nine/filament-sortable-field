@@ -1,13 +1,13 @@
 <?php
 
-namespace VendorName\Skeleton;
+namespace EightyNine\SortableField;
 
 use Filament\PluginServiceProvider;
 use Spatie\LaravelPackageTools\Package;
 
-class SkeletonServiceProvider extends PluginServiceProvider
+class SortableFieldServiceProvider extends PluginServiceProvider
 {
-    public static string $name = 'skeleton';
+    public static string $name = 'filament-sortable-field';
 
     protected array $resources = [
         // CustomResource::class,
@@ -22,15 +22,15 @@ class SkeletonServiceProvider extends PluginServiceProvider
     ];
 
     protected array $styles = [
-        'plugin-skeleton' => __DIR__ . '/../resources/dist/skeleton.css',
+        'plugin-filament-sortable-field' => __DIR__ . '/../resources/dist/filament-sortable-field.css',
     ];
 
     protected array $scripts = [
-        'plugin-skeleton' => __DIR__ . '/../resources/dist/skeleton.js',
+        'plugin-filament-sortable-field' => __DIR__ . '/../resources/dist/filament-sortable-field.js',
     ];
 
     // protected array $beforeCoreScripts = [
-    //     'plugin-skeleton' => __DIR__ . '/../resources/dist/skeleton.js',
+    //     'plugin-filament-sortable-field' => __DIR__ . '/../resources/dist/filament-sortable-field.js',
     // ];
 
     public function configurePackage(Package $package): void
