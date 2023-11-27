@@ -2,7 +2,7 @@ const colors = require("tailwindcss/colors");
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./resources/views/**/*.blade.php", "./src/**/*.php"],
+  content: ["./resources/views/forms/components/**/*.blade.php", "./src/**/*.php"],
   darkMode: "class",
   theme: {
     extend: {
@@ -17,5 +17,5 @@ module.exports = {
   corePlugins: {
     preflight: false,
   },
-  plugins: [],
+    plugins: []
 };
