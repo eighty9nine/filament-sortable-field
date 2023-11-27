@@ -2,7 +2,6 @@
     @php
         $items = $getSortableItems();
         $data = $getState();
-
     @endphp
     <div
         x-data="{ state: $wire.{{ $applyStateBindingModifiers("\$entangle('{$getStatePath()}')") }}}"
@@ -21,7 +20,7 @@
                     });
                     state = JSON.stringify(sortedItems)
                   }catch(e){
-                    console.log(e)
+                    console.error(e)
                   }
                 },
               },

@@ -26,6 +26,8 @@ class SortableField extends Field
 
         $newState = [];
         if($state){
+            if(is_string($state))
+                $state = json_decode($state, true);
             foreach ($state as $key => $value) {
                 if(isset($sortableItems[$key])){
                     $newState[$key] = $value;
