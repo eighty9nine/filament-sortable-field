@@ -2,10 +2,14 @@
 
 namespace EightyNine\SortableField;
 
-use Filament\PluginServiceProvider;
+use Spatie\LaravelPackageTools\PackageServiceProvider;
 use Spatie\LaravelPackageTools\Package;
+use Filament\Support\Assets\Css;
+use Filament\Support\Assets\Js;
+use Filament\Support\Facades\FilamentAsset;
+use Spatie\LaravelPackageTools\Commands\InstallCommand;
 
-class SortableFieldServiceProvider extends PluginServiceProvider
+class SortableFieldServiceProvider extends PackageServiceProvider
 {
     public static string $name = 'filament-sortable-field';
 
@@ -35,6 +39,29 @@ class SortableFieldServiceProvider extends PluginServiceProvider
 
     public function configurePackage(Package $package): void
     {
-        $package->name(static::$name);
+        $package->name(static::$name)
+            ->hasViews()
+            ->hasInstallCommand(
+                function (InstallCommand $command) {
+                    $command->copyAndRegisterServiceProviderInApp()->askToStarRepoOnGitHub($this->getAssetPackageName());
+                }
+            );
+    }
+
+
+
+    protected function getAssetPackageName(): ?string
+    {
+        return 'eightynine/filament-sortable-field';
+    }
+
+
+	public function packageBooted(): void
+    {
+
+        FilamentAsset::register([
+			Css::make('sortable-field', __DIR__ . '/../resources/dist/filament-sortable-field.css'),
+			Js::make('sortable-field', __DIR__ . '/../resources/dist/filament-sortable-field.js'),
+		], package: $this->getAssetPackageName());
     }
 }
